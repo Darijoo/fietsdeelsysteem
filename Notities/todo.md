@@ -41,3 +41,18 @@ Essentieel:
   -Kan gestart worden vanuit terminal-interface
   -Kan ook gestart worden door de applicatie te starten met het -s argument
   }
+
+- Gebruikersinterface
+  {
+
+}
+
+- bullshit dat meneer zegt
+  {
+  -Oplossing filmzalen zeker bekijken
+  -Geen id gaan gerbuiken slots een object gebruiken
+  -Slots wel identifier gebruiken
+  -Output html
+  -En picklen ook in menu
+  -Pythonanyware
+  }
