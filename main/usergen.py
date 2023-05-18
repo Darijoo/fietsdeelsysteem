@@ -6,7 +6,7 @@ voornamen = ['Dario', 'Olivia', 'Noah', 'Ava', 'Ethan', 'Sophia', 'Lucas', 'Mia'
 achternamen = ['Smith', 'Johnson', 'Williams', 'Jones', 'Brown', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Dubois', 'Lambert', 'Moureau', 'Lemaire', 'Simon', 'Janssens', 'Noël', 'Dumont', 'Dupont', 'Jacobs', 'Michaux', 'Lefebvre', 'Collignon', 'Gilles', 'Bastin', 'Dumont', 'Leroy', 'Lemaître', 'Mathieu', 'Lambert', 'Simon', 'Dubois', 'Durant', 'Moulin', 'Henry', 'Lambert', 'Lenaerts', 'Vandenberghe', 'Fournier', 'Denis', 'François', 'Jacques', 'Martin', 'Léonard', 'Leroy', 'Benoît', 'Dubois', 'Maréchal', 'Fontaine', 'Gosselin', 'Lejeune', 'Maes', 'Delvaux', 'Thiry', 'Renard', 'Bastin', 'Vandervorst', 'Van Laethem', 'Rousseau', 'Simon', 'Timmermans', 'Claes', 'Smet', 'Delvaux', 'Fernandez', 'Gérard', 'Vandenberghe', 'Moreau', 'Dujardin', 'Lambert', 'Leclercq', 'Godefroid', 'Mertens', 'Dumont', 'Vanderlinden', 'Bertrand', 'Carlier', 'Demeyer', 'Dewit', 'Dubois', 'Fernandez', 'François', 'Lefèvre', 'Lejeune', 'Lemmens', 'Lenaerts', 'Lepage', 'Maes', 'Mathieu', 'Matthys', 'Michel', 'Mouton', 'Noël', 'Pierre', 'Pierlot', 'Renard', 'Rochefort', 'Schmitz', 'Smet', 'Stevens', 'Thibaut', 'Van Bever', 'Van Damme', 'Van Laethem', 'Vandenberghe', 'Vanderlinden', 'Vanderveken', 'Vansteenkiste', 'Verhaegen', 'Willems', 'Hantson', 'Seniow', 'Belluci', 'Khalifa', 'Cools', 'Verreydt']
 
 # lijst om namen op te slaan
-user = []
+username = []
 
 # 1000 namen genereren
 for i in range(1000):
@@ -14,8 +14,8 @@ for i in range(1000):
     voornaam = random.choice(voornamen)
     achternaam = random.choice(achternamen)
     # naam toevoegen aan lijst
-    user.append(voornaam + ' ' + achternaam)
+    username.append(voornaam + ' ' + achternaam)
 
 # de namen in jsonfile dumpen
-with open('userlist.json', 'w') as outfile:
-    json.dump(user, outfile)
+with open('usernamelist.json', 'w') as outfile:
+    json.dump(username, outfile)

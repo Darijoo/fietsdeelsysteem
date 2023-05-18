@@ -1,5 +1,6 @@
 import json
-import classes
+import station
+import gebruiker
 
 with open("velo.geojson", "r") as f:
     velo = json.load(f)
@@ -13,10 +14,10 @@ stations = []
 for el in features:
     prop = el.get("properties")
     if (prop.get("Objecttype") == "VELOSTATION"):
-        stations.append(classes.Station(prop.get("Naam"), prop.get("Objectcode"), prop.get("Aantal_plaatsen"), [prop.get("Type_velo")], prop.get("Gebruik")))
+        stations.append(station.Station(prop.get("Naam"), prop.get("Objectcode"), prop.get("Aantal_plaatsen"), prop.get("Gebruik")))
 
 username = []
 for user in userlist:
-    username.append(classes.Gebruiker(username))
+    username.append(gebruiker.Gebruiker(username))
 
 
