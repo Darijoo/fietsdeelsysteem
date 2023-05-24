@@ -1,6 +1,7 @@
 class Gebruiker:
-    def __init__(self, username):
+    def __init__(self, id, username):
         self.username = username # gebruikersnaam
+        self.id = id
         self.heeftFiets = False
 
     def geefAlleGebruikers(self, username):

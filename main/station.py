@@ -5,13 +5,13 @@ class Station:
         self.name = name            # stationsnaam
         self.id = id                # objectcode
         self.capaciteit = cap         # aantal plaatsen
-        self.slots = []             # slots classes
+        self.slots = []              # slots classes
         self.onderhoud = False    # onderhoud
-        self.fiets = []             # fietsen classes
+        self.fietsen = []             # fietsen classes
 
     def voegFietsToe(self, fiets: Fiets): # fiets toevoegen aan station
         if (len(self.slots) < self.capaciteit):
-            self.slots.append(fiets)
+            self.fietsen.append(fiets)
             return True
         return False
     
@@ -22,7 +22,7 @@ class Station:
         return False
     
     def getBeschikbareFietsen(self):
-        return [fiets for fiets in self.fiets if not fiets.in_gebruik]
+        return [fiets for fiets in self.fietsen if not fiets.in_gebruik]
     
     def printSystemInfo(self, stations, username): # systeem informatie
         print(f"There are {len(stations)} stations in Antwerp.") 
@@ -38,3 +38,10 @@ class Station:
         for station in stations:
             if (station.capaciteit > len(station.slots)):
                 print(f"Station {station.name} heeft nog {station.capaciteit - len(station.slots)} plaatsen vrij.")
+
+    def getFreeSlot(self):
+        for slot in self.slots:
+            if not slot.in_gebruik:
+                return slot
+        return None
+

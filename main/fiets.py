@@ -1,9 +1,8 @@
 
 class Fiets:
     def __init__(self, fiets_id, station=None, slot=None, in_gebruik=False):
-        self.fiets_id = fiets_id
+        self.id =  fiets_id
         self.station = station
-        self.slot = slot
         self.in_gebruik = in_gebruik
         self.huidige_locatie = None
 
@@ -12,11 +11,10 @@ class Fiets:
             self.huidig_station.verwijderFiets(self)
         bestemming_station.voegFietsToe(self)
         self.huidig_station = bestemming_station
-        print(f"De fiets {self.fiets_id} is verplaatst naar station {bestemming_station.station_id}.")
-
+        print(f"De fiets {self.id} is verplaatst naar station {bestemming_station.station_id}.")
 
     def printFietsInfo(self, stations, username):
-        print(f"Fiets ID: {self.fiets_id}")
+        print(f"Fiets ID: {self.id}")
         for station in stations:
             for slot in station.slots:
                 if slot.fiets == self:
@@ -28,5 +26,3 @@ class Fiets:
                 break
         else:
             print("Gebruiker: Geen gebruiker")
-    
-
