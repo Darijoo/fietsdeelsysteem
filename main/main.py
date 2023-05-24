@@ -1,5 +1,6 @@
 from jsonParser import stations, username
 from station import Station
+from fiets import Fiets
 
 station = Station("Example Station", "123", 10,"In gebruik")
 station.printSystemInfo(stations, username)

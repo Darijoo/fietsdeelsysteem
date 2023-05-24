@@ -2,7 +2,7 @@ import random
 import json
 class World:
     # Aantal fietsen en gebruikers
-    num_bikes = 4200
+    num_bikes = 3620
     num_users = 1000
     def __init__(self, num_bikes, num_users):
         self.bikes = self.genBikes(self.num_bikes)

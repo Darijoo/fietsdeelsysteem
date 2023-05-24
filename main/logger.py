@@ -3,9 +3,9 @@ class Logger: # loggen van bewegingen
     def __init__(self):
         self.log = []
 
-    def log_movement(self, bike_id, source_station_id, destination_station_id):
+    def log_movement(self, fiets_id, bron_station_id, bestemming_station_id):
         self.log.append({
-            "bike_id": bike_id,
-            "source_station_id": source_station_id,
-            "destination_station_id": destination_station_id
+            "fiets_id": fiets_id,
+            "bron_station_id": bron_station_id,
+            "bestemming_station_id": bestemming_station_id
         })
