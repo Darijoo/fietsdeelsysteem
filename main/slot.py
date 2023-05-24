@@ -1,13 +1,13 @@
 class Slot: # slots in stations
-    def __init__(self, slot_id, bike=None):
+    def __init__(self, slot_id, fiets=None):
         self.slot_id = slot_id
-        self.bike = bike
+        self.fiets = fiets
 
-    def assign_bike(self, bike):
-        self.bike = bike
+    def assign_fiets(self, fiets):
+        self.fiets = fiets
 
-    def remove_bike(self):
-        self.bike = None
+    def verwijderFietsUitSlot(self):
+        self.fiets = None
 
     def printSlotInfo(self, stations, username):
         print(f"Slot ID: {self.slot_id}")
@@ -18,12 +18,12 @@ class Slot: # slots in stations
                     break
         else:
             print("Station: Geen station")
-        if self.bike != None:
-            print(f"Fiets: {self.bike.fiets_id}")
+        if self.fiets != None:
+            print(f"Fiets: {self.fiets.fiets_id}")
         else:
             print("Fiets: Geen fiets")
         for user in username:
-            if user.hasBike == True:
+            if user.heeftFiets == True:
                 print(f"Gebruiker: {user.username}")
                 break
         else:
