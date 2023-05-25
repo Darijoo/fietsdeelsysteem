@@ -1,35 +1,36 @@
 class Gebruiker:
-    def __init__(self, id, username):
-        self.username = username # gebruikersnaam
+    def __init__(self, id, usernames):
+        self.usernames = usernames # gebruikersnaam
         self.id = id
         self.heeftFiets = False
 
-    def geefAlleGebruikers(self, username):
-        for user in username:
-            print(user.username)
+    def getAllUsers(self, usernames):
+        for user in usernames:
+            print(user.usernames)
 
-    def geefTotaalAantalGebruikers(self, username):
-        print(f"Er zijn {len(username)} gebruikers geregistreerd.")
+    def getTotalUserCount(self, usernames):
+        print(f"There are {len(usernames)} registered users.")
 
-    def geefGebruikerInfo(self, username):
-        print(f"De gebruiker {self.username} heeft een fiets: {'ja' if self.heeftFiets else 'nee'}")
+    def getUserInfo(self, usernames):
+        print(f"The user {self.usernames} has a bike: {'yes' if self.hasBike else 'no'}")
 
-    def voegGebruikerToe(self, username):
-        username.append(self)
-        print(f"De gebruiker {self.username} is toegevoegd.")
+    def addUser(self, usernames):
+        usernames.append(self)
+        print(f"The user {self.usernames} has been added.")
 
-    def geefFiets(self, fiets):
-        if self.heeftFiets == False:
-            self.heeftFiets = True
-            fiets.in_gebruik = True
-            print(f"De gebruiker {self.username} heeft nu een fiets.")
-        else: 
-            print(f"De gebruiker {self.username} heeft al een fiets.")
-
-    def returnFiets(self, fiets):
-        if self.heeftFiets == True:
-            self.heeftFiets = False
-            fiets.in_gebruik = False
-            print(f"De gebruiker {self.username} heeft nu geen fiets meer.")
+    def getBike(self, bike):
+        if not self.hasBike:
+            self.hasBike = True
+            bike.inUse = True
+            print(f"The user {self.usernames} now has a bike.")
         else:
-            print(f"De gebruiker {self.username} heeft geen fiets om in te leveren.")
+            print(f"The user {self.usernames} already has a bike.")
+
+    def returnBike(self, bike):
+        if self.hasBike:
+            self.hasBike = False
+            bike.inUse = False
+            print(f"The user {self.usernames} no longer has a bike.")
+        else:
+            print(f"The user {self.usernames} has no bike to return.")
+

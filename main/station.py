@@ -4,44 +4,44 @@ class Station:
     def __init__(self, name: str, id: str, cap: int, state: str):
         self.name = name            # stationsnaam
         self.id = id                # objectcode
-        self.capaciteit = cap         # aantal plaatsen
+        self.capacity = cap         # aantal plaatsen
         self.slots = []              # slots classes
-        self.onderhoud = False    # onderhoud
-        self.fietsen = []             # fietsen classes
+        self.maintenance = False    # onderhoud
+        self.bikes = []             # fietsen classes
 
-    def voegFietsToe(self, fiets: Fiets): # fiets toevoegen aan station
-        if (len(self.slots) < self.capaciteit):
-            self.fietsen.append(fiets)
+    def addBike(self, bike: Fiets):
+        if len(self.slots) < self.capacity:
+            self.bikes.append(bike)
             return True
         return False
-    
-    def verwijderfiets(self, fiets: Fiets): # fiets verwijderen uit station
-        if (fiets in self.slots): 
-            self.slots.remove(fiets)
+
+    def removeBike(self, bike: Fiets):
+        if bike in self.slots:
+            self.slots.remove(bike)
             return True
         return False
-    
-    def getBeschikbareFietsen(self):
-        return [fiets for fiets in self.fietsen if not fiets.in_gebruik]
-    
-    def printSystemInfo(self, stations, username): # systeem informatie
-        print(f"There are {len(stations)} stations in Antwerp.") 
-        print(f"{len(username)} users are registered.")
-    
-    def printStationInfo(self): # station informatie
-        print(f"Station {self.name} has {len(self.slots)} fiets.")
-        print(f"It has a capaciteit of {self.capaciteit} fiets.")
-        print(f"The station is currently {'not ' if not self.onderhoud else ''}under onderhoud.")
-    
-    def toonVrijeStations(self, stations): # toon alle stations met vrije plaatsen
-        print("De volgende stations zijn beschikbaar:")
+
+    def getAvailableBikes(self):
+        return [bike for bike in self.bikes if not bike.in_use]
+
+    def printSystemInfo(self, stations, usernames):
+        print(f"There are {len(stations)} stations in Antwerp.")
+        print(f"{len(usernames)} users are registered.")
+
+    def printStationInfo(self):
+        print(f"Station {self.name} has {len(self.slots)} bike(s).")
+        print(f"It has a capacity of {self.capacity} bike(s).")
+        print(f"The station is currently {'not ' if not self.maintenance else ''}under maintenance.")
+
+    def showFreeStations(self, stations):
+        print("The following stations have available slots:")
         for station in stations:
-            if (station.capaciteit > len(station.slots)):
-                print(f"Station {station.name} heeft nog {station.capaciteit - len(station.slots)} plaatsen vrij.")
+            if station.capacity > len(station.slots):
+                print(f"Station {station.name} has {station.capacity - len(station.slots)} free slot(s).")
 
     def getFreeSlot(self):
         for slot in self.slots:
-            if not slot.in_gebruik:
+            if not slot.in_use:
                 return slot
         return None
 

@@ -1,28 +1,27 @@
-
 class Fiets:
-    def __init__(self, fiets_id, station=None, slot=None, in_gebruik=False):
-        self.id =  fiets_id
+    def __init__(self, bikeId, station=None, slot=None, inUse=False):
+        self.id = bikeId
         self.station = station
-        self.in_gebruik = in_gebruik
-        self.huidige_locatie = None
+        self.inUse = inUse
+        self.currentLocation = None
 
-    def verplaatsNaarStation(self, bestemming_station):
-        if self.huidig_station:
-            self.huidig_station.verwijderFiets(self)
-        bestemming_station.voegFietsToe(self)
-        self.huidig_station = bestemming_station
-        print(f"De fiets {self.id} is verplaatst naar station {bestemming_station.station_id}.")
+    def moveToStation(self, destinationStation):
+        if self.currentStation:
+            self.currentStation.removeBike(self)
+        destinationStation.addBike(self)
+        self.currentStation = destinationStation
+        print(f"The bike {self.id} has been moved to station {destinationStation.stationId}.")
 
-    def printFietsInfo(self, stations, username):
-        print(f"Fiets ID: {self.id}")
+    def printBikeInfo(self, stations, usernames):
+        print(f"Bike ID: {self.id}")
         for station in stations:
             for slot in station.slots:
-                if slot.fiets == self:
+                if slot.bike == self:
                     print(f"Station: {station.name}")
-                    print(f"Slot: {slot.slot_id}")
-        for user in username:
-            if user.heeftFiets == True:
-                print(f"Gebruiker: {user.username}")
+                    print(f"Slot: {slot.slotId}")
+        for user in usernames:
+            if user.hasBike:
+                print(f"User: {user.username}")
                 break
         else:
-            print("Gebruiker: Geen gebruiker")
+            print("User: No user")
