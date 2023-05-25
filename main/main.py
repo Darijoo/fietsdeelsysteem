@@ -18,8 +18,8 @@ username = input("Geef gebruiksernaam")
 
 while True:
     print("Wat wil je doen?")
-    print("1. Fiets huren")
-    print("2. Fiets terugbrengen")
+    print("1. bike huren")
+    print("2. bike terugbrengen")
     print("8. Station informatie")
     print("11. Gebruiker informatie")
     print("12. Toon alle beschikbare stations")
@@ -36,16 +36,14 @@ while True:
 
     match(response):
         case 1:
-            fiets = None
-            while(not fiets):
+            bike = None
+            while(not bike):
                 station = bigbrain.getStationByName(input("geef naam van station: "))
                 if not station:
                     print("Kan station niet vinden. Check spelling")
                     continue
-                fiets = bigbrain.getFreeBike(station)
-                if not fiets:
+                bike = bigbrain.getFreeBike(station)
+                if not bike:
                     print("Geen fiets in dit station, geef een ander station")
                     continue
 
-if response == '12':
-    station.toonVrijeStations(stations)

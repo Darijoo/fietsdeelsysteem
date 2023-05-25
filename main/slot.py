@@ -1,36 +1,42 @@
 from fiets import Fiets
 
 class Slot: # slots in stations
-    def __init__(self, slot_id, fiets=-1):
+    def __init__(self, slot_id, bike=-1):
         self.id = slot_id
         self.in_gebruik = False
-        self.fiets = fiets
+        self.bike = bike
 
-    def setFiets(self, fiets: int):
-        self.fiets = fiets
+    def setBike(self, bike: int):
+        self.bike = bike
 
-    def getFiets(self):
-        return self.fiets
+def getBike(self):
+    return self.bike
 
-    def verwijderFietsUitSlot(self):
-        self.fiets = None
+def removeBikeFromSlot(self):
+    self.bike = None
 
-    def printSlotInfo(self, stations, username):
-        print(f"Slot ID: {self.id}")
-        for station in stations:
-            for slot in station.slots:
-                if slot.slot_id == self.id:
-                    print(f"Station: {station.name}")
-                    break
-        else:
-            print("Station: Geen station")
-        if self.fiets != None:
-            print(f"Fiets: {self.fiets}")
-        else:
-            print("Fiets: Geen fiets")
-        for user in username:
-            if user.heeftFiets == True:
-                print(f"Gebruiker: {user.username}")
+def printSlotInfo(self, stations, usernames):
+    print(f"Slot ID: {self.id}")
+    for station in stations:
+        for slot in station.slots:
+            if slot.id == self.id:
+                print(f"Station: {station.name}")
                 break
         else:
-            print("Gebruiker: Geen gebruiker")
+            continue
+        break
+    else:
+        print("Station: No station")
+    
+    if self.bike is not None:
+        print(f"Bike: {self.bike}")
+    else:
+        print("Bike: No bike")
+    
+    for user in usernames:
+        if user.hasBike:
+            print(f"User: {user.username}")
+            break
+    else:
+        print("User: No user")
+
