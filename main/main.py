@@ -3,13 +3,14 @@ from controller import Controller
 from gebruiker import Gebruiker
 from station import Station
 from fiets import Fiets
+from pick import pick
 
 bigbrain = Controller()
 
 # station = Station("Example Station", "123", 10,"In gebruik")
 # station.printSystemInfo(stations, username)
 
-# valid_responses = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
+
 valid_responses = []
 for i in range(13):
     valid_responses.append(i)
@@ -18,12 +19,13 @@ username = input("Geef gebruiksernaam")
 
 while True:
     print("Wat wil je doen?")
-    print("1. bike huren")
-    print("2. bike terugbrengen")
-    print("8. Station informatie")
-    print("11. Gebruiker informatie")
-    print("12. Toon alle beschikbare stations")
-    print("13. Exit")
+    print("1. fiets huren")
+    print("2. fiets terugbrengen")
+    print("3. Station informatie")
+    print("4. Gebruiker informatie")
+    print("5. Toon alle beschikbare stations")
+    print("6. exporteer info als web pagina")
+    print("7. Exit")
     response = input("Kies een optie: ")
     try:
         response = int(response)
@@ -46,4 +48,21 @@ while True:
                 if not bike:
                     print("Geen fiets in dit station, geef een ander station")
                     continue
-
+        case 2:
+            bike = None
+            while(not bike):
+                station = bigbrain.getStationByName(input("geef naam van station: "))
+                if not station:
+                    print("Kan station niet vinden. Check spelling")
+                    continue
+                bike = bigbrain.getFreeBike(station)
+                if not bike:
+                    print("Geen fiets in dit station, geef een ander station")
+                    continue
+        case 3:
+            station = bigbrain.getStationByName(input("geef naam van station: "))
+            if not station:
+                print("Kan station niet vinden. Check spelling")
+                continue
+            station.printStationInfo(station, username)
+        

@@ -22,13 +22,13 @@ class Station:
         return False
 
     def getAvailableBikes(self):
-        return [bike for bike in self.bikes if not bike.in_use]
+        return [bike for bike in self.bikes if not bike.inUse]
 
     def printSystemInfo(self, stations, usernames):
         print(f"There are {len(stations)} stations in Antwerp.")
         print(f"{len(usernames)} users are registered.")
 
-    def printStationInfo(self):
+    def printStationInfo(self, stations, usernames):
         print(f"Station {self.name} has {len(self.slots)} bike(s).")
         print(f"It has a capacity of {self.capacity} bike(s).")
         print(f"The station is currently {'not ' if not self.maintenance else ''}under maintenance.")

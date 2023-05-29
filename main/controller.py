@@ -9,10 +9,11 @@ class Controller:
         self.gen = Generator(3620, 4200)
         # bikes, stations, users come from the generator
 
-        station = self.gen.getStations()[0]
-        print(station.name)
-        for el in self.gen.getBikes()[:10]:
-            station.addBike(el)
+        station = self.gen.getStations()
+        # print(station.name)
+        
+        for el in self.gen.getBikes():
+            Station.addBike(el)
 
     def rentBike(self, user: Gebruiker, bike: Fiets):
         pass
@@ -36,6 +37,12 @@ class Controller:
         return None
 
     def moveBike(self, station: Station, bike: Fiets):
+        bike.station = station.id
+        slot = station.getFreeSlot()
+        slot.setBike(bike.id)
+        station.addBike(bike)
+
+    def depositBike(self,station: Station, bike: Fiets):
         bike.station = station.id
         slot = station.getFreeSlot()
         slot.setBike(bike.id)

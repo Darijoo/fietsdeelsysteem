@@ -1,8 +1,8 @@
-class Gebruiker:
+class Gebruiker():
     def __init__(self, id, usernames):
         self.usernames = usernames # gebruikersnaam
         self.id = id
-        self.heeftFiets = False
+        self.hasBike = False
 
     def getAllUsers(self, usernames):
         for user in usernames:
