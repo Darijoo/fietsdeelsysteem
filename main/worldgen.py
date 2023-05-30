@@ -20,10 +20,10 @@ class Generator:
         # Creëer een lijst van fietsen
         bikes = []
         for i in range(1, num_bikes + 1):
-            fiets = Fiets(i)
+            bike = Fiets(i)
             # bike_id = f"fiets_{i}"
             # bike = {"bike_id": bike_id}
-            bikes.append(fiets)
+            bikes.append(bike)
         # with open('bikelist.json', 'w') as outfile:
         #     json.dump(bikes, outfile)
         return bikes

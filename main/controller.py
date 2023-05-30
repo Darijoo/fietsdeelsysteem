@@ -13,7 +13,9 @@ class Controller:
         # print(station.name)
         
         for el in self.gen.getBikes():
-            Station.addBike(el)
+            for station in self.gen.getStations():
+                if station.id == el.station:
+                    station.addBike(el)
 
     def rentBike(self, user: Gebruiker, bike: Fiets):
         pass

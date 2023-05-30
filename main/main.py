@@ -9,13 +9,13 @@ bigbrain = Controller()
 
 # station = Station("Example Station", "123", 10,"In gebruik")
 # station.printSystemInfo(stations, username)
-
+stations = bigbrain.gen.getStations()
 
 valid_responses = []
 for i in range(13):
     valid_responses.append(i)
 
-username = input("Geef gebruiksernaam")
+username = input("Geef gebruiksernaam ")
 
 while True:
     print("Wat wil je doen?")
@@ -40,7 +40,8 @@ while True:
         case 1:
             bike = None
             while(not bike):
-                station = bigbrain.getStationByName(input("geef naam van station: "))
+                print([station.name for station in stations])
+                station = bigbrain.getStationByName(input("Geef naam van station: "))
                 if not station:
                     print("Kan station niet vinden. Check spelling")
                     continue
@@ -51,7 +52,8 @@ while True:
         case 2:
             bike = None
             while(not bike):
-                station = bigbrain.getStationByName(input("geef naam van station: "))
+                stationName = pick([station.name for station in stations], "Kies een station: ", indicator="=>")
+                station = bigbrain.getStationByName(stationName)
                 if not station:
                     print("Kan station niet vinden. Check spelling")
                     continue

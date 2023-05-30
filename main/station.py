@@ -9,13 +9,13 @@ class Station:
         self.maintenance = False    # onderhoud
         self.bikes = []             # fietsen classes
 
-    def addBike(self, bike: Fiets):
+    def addBike(self, bike):
         if len(self.slots) < self.capacity:
             self.bikes.append(bike)
             return True
         return False
 
-    def removeBike(self, bike: Fiets):
+    def removeBike(self, bike):
         if bike in self.slots:
             self.slots.remove(bike)
             return True
@@ -38,7 +38,7 @@ class Station:
         for station in stations:
             if station.capacity > len(station.slots):
                 print(f"Station {station.name} has {station.capacity - len(station.slots)} free slot(s).")
-
+ 
     def getFreeSlot(self):
         for slot in self.slots:
             if not slot.in_use:
