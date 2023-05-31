@@ -47,7 +47,7 @@ Essentieel:
 
 }
 
-- bullshit dat meneer zegt
+- dingen dat meneer zegt
   {
   -Oplossing filmzalen zeker bekijken
   -Geen id gaan gerbuiken slots een object gebruiken
@@ -56,3 +56,15 @@ Essentieel:
   -En picklen ook in menu
   -Pythonanyware
   }
+
+stappenplan interface:
+
+1. Gebruiker geeft naam in (als de gebruiker nog niet bestaat dan wordt er een nieuwe gebruiker aangemaakt en in de lijst van gebruikers gestoken)
+2. Dan krijgt de gebruiker een keuzemenu te zien en moet hij een optie kiezen van wat hij wilt doen
+3. Als hij 1 kiest betekent dat hij een fiets wilt huren. Dan kiest hij eerst uit welk station hij een fiets wilt huren. Daarna krijgt hij een fiets. (Als er geen fiets in het gekozen station zit moet hij een andere kiezen)
+4. Als hij 2 kiest dan wilt hij een fiets terugbrengen. (Als de gebruiker al een fiets heeft krijgt hij een melding dat hij maar 1 fiets kan hebben en gaat hij terug naar het keuzemenu) Dan gaat hij een station moeten kiezen waar hij het wilt inleveren. Dan krijgt hij een melding dat de fiets is ingeleverd en heeft de gebruiker geen fiets meer.
+5. Als hij 3 kiest dan vraagt hij informatie over een station. Hij kiest eerst een station. Dan krijgt hij alle info over het gekozen station. En na input van de gebruiker gaat hij terug naar het menu.
+6. Als hij 4 kiest krijgt hij info over zichzelf. Na input gaat de gebruiker terug naar het menu
+7. Als de gebruiker op 5 drukt krijgt hij een lijst van alle beschikbare stations.
+8. Als hij op 6 drukt wordt alle info gexporteerd naar een web pagina.
+9. Als hij op 7 drukt gaat hij uit de interface.
