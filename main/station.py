@@ -28,7 +28,7 @@ class Station:
         print(f"There are {len(stations)} stations in Antwerp.")
         print(f"{len(usernames)} users are registered.")
 
-    def printStationInfo(self, stations, usernames):
+    def printStationInfo(self):
         print(f"Station {self.name} has {len(self.slots)} bike(s).")
         print(f"It has a capacity of {self.capacity} bike(s).")
         print(f"The station is currently {'not ' if not self.maintenance else ''}under maintenance.")
