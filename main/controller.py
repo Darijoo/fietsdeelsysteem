@@ -5,8 +5,8 @@ from fiets import Fiets
 from slot import Slot
 
 class Controller:
-    def __init__(self):
-        self.gen = Generator(3620, 4200)
+    def __init__(self, numBikes, numUsers):
+        self.gen = Generator(numBikes, numUsers)
         # bikes, stations, users come from the generator
 
         station = self.gen.getStations()
@@ -49,3 +49,21 @@ class Controller:
         slot = station.getFreeSlot()
         slot.setBike(bike.id)
         station.addBike(bike)
+
+    def printAllUsernames(self):
+        for user in self.gen.getUsers():
+            print(user.id)
+            print(user.username)
+    
+    def getTotalUserCount(self):
+        usernames = self.gen.getUsers()
+        # print(f"There are {len(usernames)} registered users.")
+        totalUserCount = len(usernames)
+        return totalUserCount
+    
+    def printUserInfo(self):
+        print(f"The user {self.username} has a bike: {'yes' if self.hasBike else 'no'}")
+
+    def addUser(self, username):
+        self.users.append(username)
+        print(f"User {username} added.")
