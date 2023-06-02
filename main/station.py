@@ -33,11 +33,6 @@ class Station:
         print(f"It has a capacity of {self.capacity} bike(s).")
         print(f"The station is currently {'not ' if not self.maintenance else ''}under maintenance.")
 
-    def showFreeStations(self, stations):
-        print("The following stations have available slots:")
-        for station in stations:
-            if station.capacity > len(station.slots):
-                print(f"Station {station.name} has {station.capacity - len(station.slots)} free slot(s).")
  
     def getFreeSlot(self):
         for slot in self.slots:

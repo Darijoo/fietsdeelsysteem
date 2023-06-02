@@ -21,8 +21,6 @@ class Generator:
         bikes = []
         for i in range(1, numBikes + 1):
             bike = Fiets(i)
-            # bike_id = f"fiets_{i}"
-            # bike = {"bike_id": bike_id}
             bikes.append(bike)
         # with open('bikelist.json', 'w') as outfile:
         #     json.dump(bikes, outfile)
@@ -34,7 +32,6 @@ class Generator:
         achternamen = ['Smith', 'Johnson', 'Williams', 'Jones', 'Brown', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Dubois', 'Lambert', 'Moureau', 'Lemaire', 'Simon', 'Janssens', 'Noël', 'Dumont', 'Dupont', 'Jacobs', 'Michaux', 'Lefebvre', 'Collignon', 'Gilles', 'Bastin', 'Dumont', 'Leroy', 'Lemaître', 'Mathieu', 'Lambert', 'Simon', 'Dubois', 'Durant', 'Moulin', 'Henry', 'Lambert', 'Lenaerts', 'Vandenberghe', 'Fournier', 'Denis', 'François', 'Jacques', 'Martin', 'Léonard', 'Leroy', 'Benoît', 'Dubois', 'Maréchal', 'Fontaine', 'Gosselin', 'Lejeune', 'Maes', 'Delvaux', 'Thiry', 'Renard', 'Bastin', 'Vandervorst', 'Van Laethem', 'Rousseau', 'Simon', 'Timmermans', 'Claes', 'Smet', 'Delvaux', 'Fernandez', 'Gérard', 'Vandenberghe', 'Moreau', 'Dujardin', 'Lambert', 'Leclercq', 'Godefroid', 'Mertens', 'Dumont', 'Vanderlinden', 'Bertrand', 'Carlier', 'Demeyer', 'Dewit', 'Dubois', 'Fernandez', 'François', 'Lefèvre', 'Lejeune', 'Lemmens', 'Lenaerts', 'Lepage', 'Maes', 'Mathieu', 'Matthys', 'Michel', 'Mouton', 'Noël', 'Pierre', 'Pierlot', 'Renard', 'Rochefort', 'Schmitz', 'Smet', 'Stevens', 'Thibaut', 'Van Bever', 'Van Damme', 'Van Laethem', 'Vandenberghe', 'Vanderlinden', 'Vanderveken', 'Vansteenkiste', 'Verhaegen', 'Willems', 'Hantson', 'Seniow', 'Belluci', 'Khalifa', 'Cools', 'Verreydt']
         # lijst om namen op te slaan
         users = []
-        # 1000 namen genereren
         for i in range(numUsers + 1):
             # user_id = f"user_{i}"
             # Kies een willekeurige voornaam en achternaam voor de gebruiker
@@ -71,6 +68,9 @@ class Generator:
     def getStations(self):
         return self.stations
     
-    def addUser(self, username):
-        self.users.append(username)
-        print(f"User {username} added.")
+    def fillStations(self):
+        for station in self.stations:
+            for bike in self.bikes:
+                if bike.getStation() == station.getStationNumber():
+                    station.addBike(bike)
+    

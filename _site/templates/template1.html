@@ -1,28 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
   <head>
-    <title>{{title}}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Antwerpen Velo</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
+      <h1>Antwerpen Velo</h1>
       <nav>
         <ul>
-          <li><a href="{{article1}}">Page 1</a></li>
-          <li><a href="{{article2}}">Page 2</a></li>
-          <li><a href="{{article3}}">Page 3</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="stations.html">Stations</a></li>
+          <li><a href="gebruikers.html">Gebruikers</a></li>
+          <li><a href="fietsen.html">Fietsen</a></li>
         </ul>
       </nav>
     </header>
+
     <main>
-      <h1>Welcome to my website!</h1>
-      <p>
-        Here you will find information on various topics. Please select an
-        article from the navigation bar above.
-      </p>
-      <section>
-        <h2>About Me</h2>
-        <p>{{aboutme}}</p>
-      </section>
+      <h2>Stations</h2>
+      <div class="station">
+        <h3>Stationnaam</h3>
+        <p>Status: Open</p>
+        <p>Beschikbare fietsen: 8</p>
+        <p>Vrije parkeerplekken: 2</p>
+      </div>
+
+      <div class="station">
+        <h3>Stationnaam</h3>
+        <p>Status: Gesloten</p>
+        <p>Beschikbare fietsen: 0</p>
+        <p>Vrije parkeerplekken: 10</p>
+      </div>
     </main>
+
+    <footer>
+      <p>&copy; 2023 Antwerpen Velo. Alle rechten voorbehouden.</p>
+    </footer>
   </body>
 </html>

@@ -4,10 +4,10 @@ class Gebruiker():
         self.id = id # gebruikers id
         self.hasBike = False # heeft de gebruiker een fiets?
 
-    def printUserInfo(self, id, username, hasBike):
-        print(f"User ID: {id}")
-        print(f"Username: {username}")
-        print("Has a bike" if hasBike else "Does not have a bike")
+    def printUserInfo(self):
+        print(f"User ID: {self.id}")
+        print(f"Username: {self.username}")
+        print("Has a bike" if self.hasBike else "Does not have a bike")
 
     def getBike(self, bike):
         if not self.hasBike:
