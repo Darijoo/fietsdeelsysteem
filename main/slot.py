@@ -1,10 +1,9 @@
 from fiets import Fiets
 
 class Slot: # slots in stations
-    def __init__(self, id, inUse, bike):
-        self.id = id
+    def __init__(self):
         self.inUse = False
-        self.bike = bike
+        self.bike = None
 
     def setBike(self, bike):
         self.bike = bike
@@ -14,3 +13,5 @@ class Slot: # slots in stations
         self.bike = None
         self.inUse = False
 
+    def getBike(self):
+        return self.bike

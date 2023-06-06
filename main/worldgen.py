@@ -68,9 +68,14 @@ class Generator:
     def getStations(self):
         return self.stations
     
-    def fillStations(self):
-        for station in self.stations:
-            for bike in self.bikes:
-                if bike.getStation() == station.getStationNumber():
-                    station.addBike(bike)
-    
+    def fillStations(self, stations, bikes):
+        numberOfBikesSent = 0
+        i = 0
+        while numberOfBikesSent < self.numBikes:
+            station = random.choice(stations)
+            if station.hasFreeSlot():
+                bike = bikes[i]
+                if station.addBike(bike[i]):
+                    i += 1
+                    numberOfBikesSent += 1
+                    bike.inUse = False

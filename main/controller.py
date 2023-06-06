@@ -12,15 +12,15 @@ class Controller:
         self.users = self.gen.getUsers()
         self.bikes = self.gen.getBikes()
         
-        for el in self.gen.getBikes():
-            for station in self.gen.getStations():
-                if station.id == el.station:
+        for el in self.bikes:
+            for station in self.stations:
+                if el.station == station.id:
                     station.addBike(el)
 
     def rentBike(self, user: Gebruiker, bike: Fiets):
         pass
     
-    def getStationById(self, id):
+    def getStationById(self, id): #werkt
         for el in self.stations:
             if el.id == id:
                 return el
@@ -61,7 +61,7 @@ class Controller:
         totalUserCount = len(usernames)
         return totalUserCount
     
-    def printUserInfo(self, user: Gebruiker): 
+    def printUserInfo(self, user: Gebruiker): #werkt
         print(f"The user {user.username} has a bike: {'yes' if user.hasBike else 'no'}")
 
     def addUser(self, username): #werkt
