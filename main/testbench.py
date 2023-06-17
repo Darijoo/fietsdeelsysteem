@@ -7,6 +7,8 @@ bigbrain = Controller()
 
 bigbrain.gen.fillStations(bigbrain.stations, bigbrain.bikes)
 
-station = bigbrain.askStationNumber()
+# station = bigbrain.askStationNumber()
 
-station.printStationInfo(station)
+# station.printStationInfo(station)
+
+bigbrain.printAvailableStations()

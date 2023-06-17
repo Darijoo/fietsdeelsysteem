@@ -7,7 +7,10 @@ class Station:
         self.id = id                # objectcode
         self.capacity = cap         # aantal plaatsen
         self.slots = [Slot() for i in range(cap)] # plaatsen
-        self.maintenance = state    # onderhoud
+        if state == "IN_GEBRUIK":
+            self.maintenance = False
+        else:
+            self.maintenance = True
 
 
     def addBike(self, bike): #werkt
@@ -36,10 +39,10 @@ class Station:
 
     
 
-    def printStationInfo(self, station):
-        print(f"Station {station.name} has {station.getBikeCount()} bike(s).")
-        print(f"It has a capacity of {station.capacity} bike(s).")
-        print(f"The station is currently {'not ' if not station.maintenance else ''}under maintenance.")
+    def printStationInfo(self):
+        print(f"Station {self.name} has {self.getBikeCount()} bike(s).")
+        print(f"It has a capacity of {self.capacity} bike(s).")
+        print(f"The station is currently {'not ' if not self.maintenance else ''}under maintenance.")
 
     def getFreeSlot(self):
         for slot in self.slots:

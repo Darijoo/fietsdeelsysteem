@@ -68,8 +68,8 @@ class Controller:
     
     def printAvailableStations(self): #werkt
         print("The following stations have available slots:")
-        for station in self.gen.getStations():
-            if len(station.bikes) < station.capacity and not station.maintenance:
+        for station in self.stations:
+            if station.hasFreeSlot() and not station.maintenance:
                 print(station.name)
 
     def askStationNumber(self): #werkt
@@ -162,7 +162,7 @@ class Controller:
                     user.takeBike(station)
 
 
-                case 2:
+                case 2: #werkt
                     # fiets terugbrengen
                     if not user.hasBike:
                         print("Je hebt geen fiets om terug te brengen.")
@@ -174,7 +174,7 @@ class Controller:
                     user.returnBike(station)
 
                 case 3:
-                    station = self.askAvailableStationNumber()
+                    station = self.askStationNumber()
                     if not station:
                         print("Kan station niet vinden. Check spelling")
                         continue
