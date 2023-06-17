@@ -12,10 +12,12 @@ class Controller:
         self.users = self.gen.getUsers()
         self.bikes = self.gen.getBikes()
         
-        for el in self.bikes:
-            for station in self.stations:
-                if el.station == station.id:
-                    station.addBike(el)
+        # vult stations met fietsen
+        self.gen.fillStations(self.stations, self.bikes)
+        # for el in self.bikes:
+        #     for station in self.stations:
+        #         if self.getStationById(el.station) == station.id:
+        #             station.addBike(el)
 
     def rentBike(self, user: Gebruiker, bike: Fiets):
         pass
@@ -32,11 +34,6 @@ class Controller:
                 return el
         return None
 
-    def getFreeBike(self, station: Station):
-        for bike in station.bikes:
-            if not bike.inUse:
-                return bike
-        return None
 
     def moveBike(self, station: Station, bike: Fiets):
         bike.station = station.id
@@ -87,14 +84,21 @@ class Controller:
     
     def askAvailableStationNumber(self): #werkt
         for i, station in enumerate(self.stations):
-            if len(station.bikes) < station.capacity and not station.maintenance:
+            if station.hasFreeSlot() and not station.maintenance:
                 print(f"{i + 1}. {station.name}")
+
         station_number = int(input("Geef het nummer van het station: "))
         if station_number < 1 or station_number > len(self.stations):
             print("Ongeldig stationnummer. Probeer opnieuw.")
             return None
         station = self.stations[station_number - 1]
         return station
+    
+    def askStationNumberWithBike(self): #werkt
+        for i, station in enumerate(self.stations):
+            if station.hasBike() and not station.maintenance:
+                print(f"{i + 1}. {station.name}")
+
     
     def getUserId(self, username): #werkt
         for user in self.users:
@@ -108,3 +112,81 @@ class Controller:
             if user.username == username:
                 return user
         return None
+    
+    def fillStations(self):
+        for station in self.stations:
+            station.addBike(self.bikes)
+
+    def StationInterface(self, user):
+        valid_responses = []
+        for i in range(13):
+            valid_responses.append(i)
+
+        while True:
+            print("Welkom in de stationsinterface.")
+            print("Wat wil je doen?")
+            print("1. fiets huren")
+            print("2. fiets terugbrengen")
+            print("3. Station informatie")
+            print("4. Gebruiker informatie")
+            print("5. Toon alle beschikbare stations")
+            print("6. exporteer info als web pagina")
+            print("7. Exit")
+            response = input("Kies een optie: ")
+            try:
+                response = int(response)
+            except Exception as e:
+                print(e)
+
+            if response not in valid_responses:
+                print("Ongeldige optie, probeer opnieuw.")
+                continue
+
+            match(response):
+                case 1: #werkt
+                    # fiets lenen
+                    if user.hasBike:
+                        print("Je hebt al een fiets.")
+                        continue
+                    station = self.askStationNumberWithBike()
+                    if not station:
+                        print("Kan station niet vinden. Check spelling")
+                        continue
+                    user.takeBike(station)
+
+                    # while not user.hasBike():
+                    #     station = self.askStationNumber()
+                    #     station.withdrawBike(user)
+                    #     if not station.hasBike():
+                    #         print("Geen fiets in dit station. Kies een ander station.")
+                    #         continue
+
+                case 2:
+                    # fiets terugbrengen
+                    if not user.hasBike:
+                        print("Je hebt geen fiets om terug te brengen.")
+                        continue
+                    station = self.askStationNumber()
+                    if not station:
+                        print("Kan station niet vinden. Check spelling")
+                        continue
+
+                case 3:
+                    station = self.askAvailableStationNumber()
+                    if not station:
+                        print("Kan station niet vinden. Check spelling")
+                        continue
+                    station.printStationInfo()
+                    input("Druk op enter")
+
+                case 4:
+                    user.printUserInfo()
+                    input("Druk op enter")
+                
+                case 5:
+                    self.printAvailableStations()
+                    input("Druk op enter")
+
+                case 7:
+                    print("Tot ziens!")
+                    break

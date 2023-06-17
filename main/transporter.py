@@ -1,8 +1,8 @@
 import gebruiker 
 
 class Transporter(gebruiker.Gebruiker): # fietsen verplaatsen
-    def __init__(self, userId, name):
-        super().__init__(userId, name)
+    def __init__(self, id, username):
+        super().__init__(id, username)
         self.transport_geschiedenis = []
 
     def transportBike(self, bike, sourceStation, destinationStation):
@@ -16,4 +16,4 @@ class Transporter(gebruiker.Gebruiker): # fietsen verplaatsen
             "bikeId": bike.bikeId,
             "sourceStationId": sourceStation.stationId,
             "destinationStationId": destinationStation.stationId
-    })
+        })

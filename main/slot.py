@@ -1,4 +1,5 @@
 from fiets import Fiets
+import copy
 
 class Slot: # slots in stations
     def __init__(self):
@@ -10,8 +11,10 @@ class Slot: # slots in stations
         self.inUse = True
     
     def removeBike(self):
+        bike = copy.deepcopy(self.bike)
         self.bike = None
         self.inUse = False
+        return bike
 
     def getBike(self):
         return self.bike

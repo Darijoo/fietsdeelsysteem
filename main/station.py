@@ -10,20 +10,26 @@ class Station:
         self.maintenance = state    # onderhoud
 
 
-    def addBike(self, bike):
+    def addBike(self, bike): #werkt
         for slot in self.slots:
             if not slot.inUse:
                 slot.setBike(bike)
                 bike.station = self.id
+                print(f"Bike {bike.id} added to station {self.name}.")
                 return True
-            return False
+        return False
+    
+    def returnBike(self, bike, user):
+        self.addBike(bike)
+        user.returnBike(bike)
+        print("Bike returned.")
 
-    def removeBike(self):
+    def withdrawBike(self):
         for slot in self.slots:
             if slot.inUse:
-                slot.removeBike()
-                return True
-            return False
+                bike = slot.removeBike()
+                print("Bike withdrawn.")
+                return bike
 
     def getAvailableBikes(self):
         return [bike for bike in self.bikes if not bike.inUse]
@@ -53,3 +59,9 @@ class Station:
             if slot.inUse:
                 count += 1
         return count
+    
+    def hasBike(self):
+        for slot in self.slots:
+            if slot.inUse:
+                return True
+        return False

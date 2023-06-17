@@ -3,6 +3,7 @@ class Gebruiker():
         self.username = username # gebruikersnaam
         self.id = id # gebruikers id
         self.hasBike = False # heeft de gebruiker een fiets?
+        self.bike = None # fiets van de gebruiker
 
     def printUserInfo(self):
         print(f"User ID: {self.id}")
@@ -17,10 +18,22 @@ class Gebruiker():
         else:
             print(f"The user {self.username} already has a bike.")
 
-    def returnBike(self, bike):
+    def takeBike(self, station):
+        if not self.hasBike:
+            if station.hasBike():
+                self.hasBike = True
+                self.bike = station.withdrawBike()
+                self.bike.inUse = True
+                print(f"The user {self.username} now has a bike.")
+            else:
+                print(f"The station {station.name} has no bikes.")
+        else:
+            print(f"The user {self.username} already has a bike.")
+
+    def returnBike(self, station):
         if self.hasBike:
             self.hasBike = False
-            bike.inUse = False
+            self.bike.inUse = False
             print(f"The user {self.username} no longer has a bike.")
         else:
             print(f"The user {self.username} has no bike to return.")

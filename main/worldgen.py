@@ -4,6 +4,7 @@ import json
 from station import Station
 from fiets import Fiets
 from gebruiker import Gebruiker
+from transporter import Transporter
 
 class Generator:
     # Aantal fietsen en gebruikers
@@ -45,6 +46,15 @@ class Generator:
             # with open('userlist.json', 'w') as outfile:
             #     json.dump(users, outfile)
         return users
+    
+    def genTransporters(self):
+        usernames = ["transporteur 1", "transporteur 2", "transporteur 3", "transporteur 4", "transporteur 5"]
+        transporters = []
+        for i in range(len(self.usernames)):
+            transporter = Transporter(i, usernames[i])
+            transporters.append(transporter)
+
+
 
     def genStations(self):
         with open("velo.geojson", "r") as f:
@@ -75,7 +85,10 @@ class Generator:
             station = random.choice(stations)
             if station.hasFreeSlot():
                 bike = bikes[i]
-                if station.addBike(bike[i]):
+                if station.addBike(bike):
                     i += 1
                     numberOfBikesSent += 1
                     bike.inUse = False
+
+    def sim(self):
+        pass
