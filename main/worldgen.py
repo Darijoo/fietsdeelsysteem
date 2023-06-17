@@ -1,10 +1,13 @@
 import random
 import json
+import pickle
+import os
 
 from station import Station
 from fiets import Fiets
 from gebruiker import Gebruiker
 from transporter import Transporter
+
 
 class Generator:
     # Aantal fietsen en gebruikers
@@ -13,9 +16,19 @@ class Generator:
     def __init__(self, numBikes = 3620, numUsers = 4200):
         self.numBikes = numBikes 
         self.numUsers = numUsers 
-        self.bikes = self.genBikes(numBikes) # Random
-        self.users = self.genUsers(numUsers) # Random
-        self.stations = self.genStations()    # From file
+
+        if os.path.exists("./pickle.dat"):
+                    # unpickle data
+                    with open("pickle.dat", "rb") as f:
+                        data = pickle.load(f)
+                        self.bikes = data[1]
+                        self.users = data[0]
+                        self.stations = data[2]
+        else:
+            self.bikes = self.genBikes(numBikes) # random
+            self.users = self.genUsers(numUsers) # random
+            self.stations = self.genStations() # from json
+
 
     def genBikes(self, numBikes):
         # Creëer een lijst van fietsen

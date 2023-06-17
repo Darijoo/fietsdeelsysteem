@@ -5,10 +5,11 @@ from fiets import Fiets
 
 bigbrain = Controller()
 
-bigbrain.gen.fillStations(bigbrain.stations, bigbrain.bikes)
+for user in bigbrain.users:
+    print(user.username)
 
 # station = bigbrain.askStationNumber()
 
 # station.printStationInfo(station)
 
-bigbrain.printAvailableStations()
+# bigbrain.printAvailableStations()

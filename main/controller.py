@@ -2,22 +2,20 @@ from worldgen import Generator
 from gebruiker import Gebruiker
 from station import Station
 from fiets import Fiets
-from slot import Slot
+import pickle
+import os
 
 class Controller:
     def __init__(self, numBikes=3620, numUsers=4200):
         self.gen = Generator(numBikes, numUsers)
         # bikes, stations, users come from the generator
-        self.stations = self.gen.getStations()
-        self.users = self.gen.getUsers()
-        self.bikes = self.gen.getBikes()
+        self.stations = self.gen.stations
+        self.users = self.gen.users
+        self.bikes = self.gen.bikes
         
+        if not os.path.exists("./pickle.dat"):
         # vult stations met fietsen
-        self.gen.fillStations(self.stations, self.bikes)
-        # for el in self.bikes:
-        #     for station in self.stations:
-        #         if self.getStationById(el.station) == station.id:
-        #             station.addBike(el)
+            self.gen.fillStations(self.stations, self.bikes)
 
     def rentBike(self, user: Gebruiker, bike: Fiets):
         pass
@@ -138,7 +136,7 @@ class Controller:
             print("4. Gebruiker informatie")
             print("5. Toon alle beschikbare stations")
             print("6. exporteer info als web pagina")
-            print("7. Exit")
+            print("7. Exit en sla op")
             response = input("Kies een optie: ")
             try:
                 response = int(response)
@@ -190,5 +188,8 @@ class Controller:
                     input("Druk op enter")
 
                 case 7:
+                    data = [self.users, self.bikes, self.stations]
+                    with open("pickle.dat", 'wb') as f:
+                        pickle.dump(data, f)
                     print("Tot ziens!")
                     break
