@@ -98,6 +98,13 @@ class Controller:
         for i, station in enumerate(self.stations):
             if station.hasBike() and not station.maintenance:
                 print(f"{i + 1}. {station.name}")
+        
+        station_number = int(input("Geef het nummer van het station: "))
+        if station_number < 1 or station_number > len(self.stations):
+            print("Ongeldig stationnummer. Probeer opnieuw.")
+            return None
+        station = self.stations[station_number - 1]
+        return station
 
     
     def getUserId(self, username): #werkt
@@ -154,12 +161,6 @@ class Controller:
                         continue
                     user.takeBike(station)
 
-                    # while not user.hasBike():
-                    #     station = self.askStationNumber()
-                    #     station.withdrawBike(user)
-                    #     if not station.hasBike():
-                    #         print("Geen fiets in dit station. Kies een ander station.")
-                    #         continue
 
                 case 2:
                     # fiets terugbrengen
@@ -170,6 +171,7 @@ class Controller:
                     if not station:
                         print("Kan station niet vinden. Check spelling")
                         continue
+                    user.returnBike(station)
 
                 case 3:
                     station = self.askAvailableStationNumber()
