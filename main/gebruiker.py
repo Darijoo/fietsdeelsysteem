@@ -32,9 +32,12 @@ class Gebruiker():
 
     def returnBike(self, station):
         if self.hasBike:
+            bike = self.bike
+            station.returnBike(self.bike)
             self.hasBike = False
             self.bike.inUse = False
-            print(f"The user {self.username} no longer has a bike.")
+            self.bike = None
+            print(f"The user {self.username} returned bike{bike.id}.")
         else:
             print(f"The user {self.username} has no bike to return.")
 

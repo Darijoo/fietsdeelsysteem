@@ -1,21 +1,17 @@
-# from jsonParser import stations, username
+import sys
+
 from controller import Controller
-from gebruiker import Gebruiker
-from station import Station
-from fiets import Fiets
 
 bigbrain = Controller()
 
-username = input("Geef gebruiksernaam ")
-if username in bigbrain.users:
-    print(f"Welkom terug {username}")
-else:
-    bigbrain.addUser(username)
-    
+def main():
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "s" or sys.argv[1] == "-S":
+            bigbrain.simulatieInterface()
+    else:
+        bigbrain.beginInterface()
 
 
-user = bigbrain.getUserByName(username)
-
-
-bigbrain.StationInterface(user)
+if __name__ == "__main__":
+    main()
 

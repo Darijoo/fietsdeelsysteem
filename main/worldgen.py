@@ -24,10 +24,12 @@ class Generator:
                         self.bikes = data[1]
                         self.users = data[0]
                         self.stations = data[2]
+                        self.transporters = data[3]
         else:
             self.bikes = self.genBikes(numBikes) # random
             self.users = self.genUsers(numUsers) # random
             self.stations = self.genStations() # from json
+            self.transporters = self.genTransporters() # self generated
 
 
     def genBikes(self, numBikes):
@@ -63,10 +65,10 @@ class Generator:
     def genTransporters(self):
         usernames = ["transporteur 1", "transporteur 2", "transporteur 3", "transporteur 4", "transporteur 5"]
         transporters = []
-        for i in range(len(self.usernames)):
+        for i in range(len(usernames)):
             transporter = Transporter(i, usernames[i])
             transporters.append(transporter)
-
+        return transporters
 
 
     def genStations(self):

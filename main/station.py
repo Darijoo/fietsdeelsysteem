@@ -22,10 +22,8 @@ class Station:
                 return True
         return False
     
-    def returnBike(self, bike, user):
+    def returnBike(self, bike):
         self.addBike(bike)
-        user.returnBike(bike)
-        print("Bike returned.")
 
     def withdrawBike(self):
         for slot in self.slots:
@@ -33,6 +31,25 @@ class Station:
                 bike = slot.removeBike()
                 print("Bike withdrawn.")
                 return bike
+            
+    def withdrawBikes(self):
+        bikes = []
+        while self.getBikeCountPercentage() > 50:
+            for slot in self.slots:
+                if self.getBikeCountPercentage() <= 40:
+                    return bikes
+                if slot.inUse:
+                    bike = slot.removeBike()
+                    bikes.append(bike)
+        return bikes
+    
+    def hasMoreThanEnoughBikes(self):
+        if self.getBikeCountPercentage() > 50:
+            return True
+        
+    def hasLessThanEnoughBikes(self):
+        if self.getBikeCountPercentage() < 35:
+            return True
 
     def getAvailableBikes(self):
         return [bike for bike in self.bikes if not bike.inUse]
@@ -50,20 +67,23 @@ class Station:
                 return slot
         return None
 
-    def hasFreeSlot(self):
+    def hasFreeSlot(self): #werkt
         for slot in self.slots:
             if slot.inUse == False:
                 return True
         return False
 
-    def getBikeCount(self):
+    def getBikeCount(self): #werkt
         count = 0
         for slot in self.slots:
             if slot.inUse:
                 count += 1
         return count
     
-    def hasBike(self):
+    def getBikeCountPercentage(self): #werkt
+        return self.getBikeCount() / self.capacity * 100
+    
+    def hasBike(self): #werkt
         for slot in self.slots:
             if slot.inUse:
                 return True

@@ -5,8 +5,12 @@ from fiets import Fiets
 
 bigbrain = Controller()
 
-for user in bigbrain.users:
-    print(user.username)
+bigbrain.beginInterface()
+
+
+
+# for station in availableStations:
+#     print(station.name)
 
 # station = bigbrain.askStationNumber()
 
