@@ -5,8 +5,10 @@ from controller import Controller
 bigbrain = Controller()
 
 def main():
+    "-s" in sys.argv
     if len(sys.argv) > 1:
-        if sys.argv[1] == "s" or sys.argv[1] == "-S":
+        if "-s" in sys.argv or "-S" in sys.argv:
+            print(sys.argv)
             bigbrain.simulatieInterface()
     else:
         bigbrain.beginInterface()

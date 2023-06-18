@@ -1,0 +1,10 @@
+Gebruikte library's:
+-time
+-pickle
+-os
+-sys
+-random
+-json
+-jinja2
+-markdown2
+-copy

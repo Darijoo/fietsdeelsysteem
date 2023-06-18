@@ -1,4 +1,3 @@
-import gebruiker 
 
 class Transporter(): # fietsen verplaatsen
     def __init__(self, id, name):
