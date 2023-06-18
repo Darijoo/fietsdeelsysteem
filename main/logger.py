@@ -12,3 +12,6 @@ class Logger: # loggen van bewegingen
 
     def printData(self):
         print(self.logList)
+
+    def logTakeBikes(self, transporter, station):
+        self.logList.append({"action" : "takeBikes", "transporter" : transporter.id, "station" : station.id})
