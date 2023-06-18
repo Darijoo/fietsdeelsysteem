@@ -1,3 +1,11 @@
 Werking van mijn project:
 Als je de main.py uitvoert gebeurt het volgende:
-Eerst krijgt de gebruiker een keuzemenu te zien waar hij moet kiezen of hij manueel fietsen wilt lenen of de simulatie wilt starten.
+Eerst krijgt de gebruiker een keuzemenu te zien waar hij moet kiezen of hij manueel fietsen wilt lenen of de simulatie wilt starten. Als je voor de manuele modus kiest moet je eerst je naam geven om in te loggen. Als je als user al bestaat word je gewoon als die gebruiker gezien door het systeem. Zo niet, dan maakt het een nieuwe gebruiker aan. Daarna krijg je een keuze menu terug met keuzes zoals fiets lenen, fiets terugbrengen, ...
+Daarna kan je exiten en worden alle gegevens opgeslagen. Als er nog geen pickle file met de data bestaat word er in het begin een volledig nieuw systeem gecreeerd, dus random gebruikers en fietsen worden willekeurig verdeeld over alle stations. En wanneer het bestand al wel bestaat gaat het systeem gewoon verder met die informatie.
+
+Wanneer je kiest voor de simulatiemodus kan je eerst de gewenste snelheid kiezen. En daarna begint de simulatie. Daar gaan constant gebruikers en transporteurs fietsen verplaatsen totdat er een keyboardinterrupt is. Dan eindigt de simulatie en wordt die data ook weer opgeslagen in de picklefile.
+
+Ik heb gekozen om alle files uit te voeren via de controller class. En in de main wordt alles vie die class dan uitgevoerd.
+
+Moeilijkheden:
+Ik heb doorheen dit project heel veel moeilijkheden gehad. Mijn eerste moeilijkheid was dat ik totaal niet wist hoe ik aan dit project moest beginnen. Ik wist niet hoe classes werkten en had eigenlijk al na de 3de week een grote achterstand voor python gekregen. Uiteindelijk heb ik bij sommige classes veel te veel defenitions gemaakt, omdat ik eigenlijk doorheen dit project bijna van 0 aan het leren was hoe ik in python kan programmeren. Wat me nog meer ontmoedigde waren de vele errors die ik doorheen het project kreeg. Door sommige errors kon ik dagen niet verder gaan. In het begin dacht ik ook dat chatgpt me veel zou helpen in dit project. Dat was allesbehalve waar. In het begon stopte ik de oefening in chatgpt en gaf die me een "oplossing". Die oplossing was verre van praktisch en zou ook niet werken. Het bracht mij ook nog meer in de war over object georienteerd programmeren. Uiteindelijk heb ik na lang sukkelen toch een werkend systeem gekregen.

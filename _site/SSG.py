@@ -3,7 +3,7 @@ from jinja2 import Environment, FileSystemLoader
 from json import load
 
 template_env = Environment(loader=FileSystemLoader(searchpath="./"))
-template = template_env.get_template("templates/template2.html")
+template = template_env.get_template("templates/template1.html")
 
 with open("pages/page1.md") as markdown_file:
     article1 = markdown(

@@ -1,0 +1,13 @@
+Package        Version
+-------------- -------
+Jinja2         3.1.2
+markdown-it-py 2.2.0
+markdown2      2.4.8
+MarkupSafe     2.1.2
+mdurl          0.1.2
+pick           2.2.0
+pip            23.1.2
+Pygments       2.14.0
+PyYAML         6.0
+rich           13.3.2
+windows-curses 2.3.1
